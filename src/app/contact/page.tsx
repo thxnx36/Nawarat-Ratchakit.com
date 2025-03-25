@@ -8,8 +8,6 @@ import {
   FaPhone, 
   FaInstagram, 
   FaLinkedinIn,
-  FaBehance,
-  FaDribbble,
   FaPaperPlane
 } from 'react-icons/fa';
 import MainLayout from '@/components/layout/MainLayout';
@@ -68,18 +66,7 @@ export default function ContactPage() {
       url: 'https://linkedin.com', 
       color: 'bg-blue-600' 
     },
-    { 
-      name: 'Behance', 
-      icon: <FaBehance size={24} />, 
-      url: 'https://behance.net', 
-      color: 'bg-blue-700' 
-    },
-    { 
-      name: 'Dribbble', 
-      icon: <FaDribbble size={24} />, 
-      url: 'https://dribbble.com', 
-      color: 'bg-pink-600' 
-    },
+
   ];
 
   const contactInfos = [
@@ -91,12 +78,12 @@ export default function ContactPage() {
     {
       icon: <FaEnvelope className="text-primary" size={24} />,
       title: 'Email',
-      details: 'contact@chichi.com',
+      details: 'thanyaret.seangsrichan@gmail.com',
     },
     {
       icon: <FaPhone className="text-primary" size={24} />,
       title: 'Phone',
-      details: '(+66) 98-765-4321',
+      details: '095-6876298',
     },
   ];
 
@@ -129,7 +116,6 @@ export default function ContactPage() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              Interested in working together or have questions? Contact me here. I&apos;m ready to discuss your project.
             </motion.p>
           </div>
 
@@ -182,22 +168,7 @@ export default function ContactPage() {
                 ))}
               </div>
               
-              <div className="mt-12">
-                <div className="relative h-64 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-animation opacity-70"></div>
-                  <div className="absolute inset-0 flex items-center justify-center text-[#ffffff] p-6 text-center">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2">Let&apos;s Work Together!</h3>
-                      <p className="text-white/90 mb-4">
-                        I&apos;m ready to bring my creativity and design skills to make your vision a reality.
-                      </p>
-                      <div className="inline-block bg-[#ffffff] text-[#ff69b4] px-4 py-2 rounded-full font-bold">
-                        Always Ready for New Projects
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </motion.div>
 
             {/* Contact Form */}

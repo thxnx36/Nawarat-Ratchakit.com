@@ -1,6 +1,6 @@
 'use client';
 
-import { FaInstagram, FaLinkedinIn, FaBehance, FaDribbble, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn,FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -10,9 +10,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: <FaInstagram size={20} />, url: 'https://instagram.com', label: 'Instagram' },
     { icon: <FaLinkedinIn size={20} />, url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <FaBehance size={20} />, url: 'https://behance.net', label: 'Behance' },
-    { icon: <FaDribbble size={20} />, url: 'https://dribbble.com', label: 'Dribbble' },
-    { icon: <FaEnvelope size={20} />, url: 'mailto:contact@example.com', label: 'Email' },
+    { icon: <FaEnvelope size={20} />, url: 'mailto:nawarat.ratchakit@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -64,8 +62,8 @@ const Footer = () => {
           <div className="col-span-1">
             <h3 className="text-xl font-semibold mb-4">Contact Me</h3>
             <p className="mb-2">
-              <span className="block">Email: contact@example.com</span>
-              <span className="block">Tel: (+66) 98-765-4321</span>
+              <span className="block">Email: Nawarat.ratchakit@gmail.com</span>
+              <span className="block">Tel: 095-6876298</span>
             </p>
             <div className="flex space-x-4 mt-6">
               {socialLinks.map((social, index) => (

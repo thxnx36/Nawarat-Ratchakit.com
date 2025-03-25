@@ -5,70 +5,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaArrowRight, FaHeart, FaStar, FaMagic, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaArrowRight, FaHeart, FaStar, FaMagic } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
-// สร้าง ProjectSlider component สำหรับแสดงภาพโปรเจคแบบเลื่อนได้
-const ProjectSlider = ({ images }: { images: string[] }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const isLastSlide = currentIndex === images.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  return (
-    <div className="relative h-40 md:h-48 w-full">
-      <div 
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 cursor-pointer shadow-md z-10 hover:bg-white transition-colors"
-        onClick={goToPrevious}
-      >
-        <FaChevronLeft className="text-[#ff9bd2]" />
-      </div>
-      <div 
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 cursor-pointer shadow-md z-10 hover:bg-white transition-colors"
-        onClick={goToNext}
-      >
-        <FaChevronRight className="text-[#ff9bd2]" />
-      </div>
-      <div className="h-full w-full overflow-hidden">
-        <motion.div
-          className="h-full w-full relative"
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Image
-            src={images[currentIndex]}
-            alt={`Project image ${currentIndex + 1}`}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover"
-          />
-        </motion.div>
-      </div>
-      {/* Pagination dots */}
-      <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5">
-        {images.map((_, index) => (
-          <button 
-            key={index}
-            className={`w-1.5 h-1.5 rounded-full ${index === currentIndex ? 'bg-[#ff9bd2]' : 'bg-white/60'}`}
-            onClick={() => setCurrentIndex(index)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 // Homepage component
 export default function Home() {
@@ -88,12 +27,7 @@ export default function Home() {
   // ตัวอักษรของคำว่า Chi Chi เพื่อทำเอนิเมชัน
   const chichiLetters = "Nawarat Ratchakit".split("");
 
-  // กำหนด path ของรูปภาพสำหรับแต่ละโปรเจค
-  const project1Images = [
-    '/images/project1-1.png',
-    '/images/project1-2.png',
-    '/images/project1-3.png',
-  ];
+
   
   return (
     <MainLayout>
@@ -223,7 +157,7 @@ export default function Home() {
                       whileHover={{ x: "100%" }}
                       transition={{ duration: 0.8 }}
                     />
-                    View My Work <FaArrowRight className="inline ml-2" />
+                    View My Projects <FaArrowRight className="inline ml-2" />
                   </motion.button>
                 </Link>
                 <Link href="/contact">
@@ -384,98 +318,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Recent Works */}
-      <section className="py-16 px-4 bg-[#fff5fa]">
-        <div className="container mx-auto">
-          <motion.h2 
-            className="text-2xl md:text-3xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Recent <span className="text-[#ff9bd2]">Works</span>
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {/* Work 1 - ใช้ ProjectSlider component */}
-            <motion.div
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5 }}
-            >
-              <ProjectSlider images={project1Images} />
-              <div className="p-4">
-                <h3 className="text-base md:text-lg font-semibold mb-2">Mobile App Design</h3>
-                <p className="text-gray-600 mb-3 text-xs md:text-sm">UI/UX Design</p>
-                <Link href="/portfolio">
-                  <span className="text-[#ff9bd2] font-medium inline-flex items-center text-xs md:text-sm">
-                    See details <FaArrowRight className="ml-1 h-3 w-3" />
-                  </span>
-                </Link>
-              </div>
-            </motion.div>
-            
-            {/* Work 2 - ใช้ ProjectSlider component เช่นกัน */}
-            <motion.div
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -5 }}
-            >
-              <ProjectSlider images={project1Images} />
-              <div className="p-4">
-                <h3 className="text-base md:text-lg font-semibold mb-2">Brand Identity</h3>
-                <p className="text-gray-600 mb-3 text-xs md:text-sm">Logo Design</p>
-                <Link href="/portfolio">
-                  <span className="text-[#ff9bd2] font-medium inline-flex items-center text-xs md:text-sm">
-                    See details <FaArrowRight className="ml-1 h-3 w-3" />
-                  </span>
-                </Link>
-              </div>
-            </motion.div>
-            
-            {/* Work 3 - ใช้ ProjectSlider component เช่นกัน */}
-            <motion.div
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow sm:col-span-2 lg:col-span-1 mx-auto sm:mx-0"
-              style={{ maxWidth: '100%', width: '100%' }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -5 }}
-            >
-              <ProjectSlider images={project1Images} />
-              <div className="p-4">
-                <h3 className="text-base md:text-lg font-semibold mb-2">Website Design</h3>
-                <p className="text-gray-600 mb-3 text-xs md:text-sm">Web Design</p>
-                <Link href="/portfolio">
-                  <span className="text-[#ff9bd2] font-medium inline-flex items-center text-xs md:text-sm">
-                    See details <FaArrowRight className="ml-1 h-3 w-3" />
-                  </span>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-          
-          <div className="text-center mt-8 md:mt-10">
-            <Link href="/portfolio">
-              <motion.button
-                className="px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-white border-2 border-[#ff9bd2] text-gray-700 text-sm md:text-base font-medium hover:bg-[#ff9bd2]/5 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View All Works
-              </motion.button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Contact CTA */}
       <section className="py-12 md:py-16 px-4 bg-white">
@@ -489,7 +332,6 @@ export default function Home() {
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">Let&apos;s Work Together</h2>
             <p className="text-sm md:text-base text-gray-600 mb-5 md:mb-6">
-              Have a project in mind? I&apos;m available for freelance work.
             </p>
             <Link href="/contact">
               <motion.button

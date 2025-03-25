@@ -6,14 +6,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import { FaGraduationCap, FaAward, FaLaptopCode, FaPalette } from 'react-icons/fa';
 
 export default function AboutPage() {
-  const skills = [
-    { name: 'UI Design', percentage: 95 },
-    { name: 'UX Research', percentage: 85 },
-    { name: 'Graphic Design', percentage: 90 },
-    { name: 'Wireframing', percentage: 95 },
-    { name: 'Prototyping', percentage: 90 },
-    { name: 'Brand Identity', percentage: 85 },
-  ];
+
 
   const experiences = [
     {
@@ -96,26 +89,52 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl font-bold mb-6">
-                Hello! I&apos;m <span className="gradient-text">Chi Chi</span>
+                Hello! I&apos;m <span className="gradient-text">Nawarat Ratchakit</span>
               </h2>
               <p className="text-lg mb-6">
-                I am a UI/UX Designer and Graphic Designer who is passionate about creating beautiful designs with great functionality. Through continuous learning and practice, I&apos;ve developed distinctive design skills with a unique personal style.
+              Hello, I&apos;m a recent MMIT graduate from Chiang Mai University with a passion for UX/UI Design. I love creating intuitive, user-friendly experiences and constantly learning new tools to enhance my skills. Though I lack formal experience, I&apos;m a fast learner, adaptable, and eager to grow in this field.
               </p>
               <p className="text-lg mb-6">
-                I enjoy creating colorful, creative designs that prioritize the user experience. I believe great design isn&apos;t just visually appealing—it must be practical and meet user needs effectively.
+                
               </p>
-              <div className="flex flex-wrap gap-4 mt-8">
-                <div className="px-6 py-2 bg-light-bg rounded-full font-semibold">
-                  #UIDesign
+              <div className="relative mt-10 mb-4 p-6 rounded-xl overflow-hidden">
+                {/* ใช้รูปภาพเป็นพื้นหลังสำหรับส่วน hashtag */}
+                <div className="absolute inset-0 w-full h-full">
+                  <Image 
+                    src="/images/cute.jpeg"
+                    alt="Background Image"
+                    fill
+                    className="object-cover opacity-80 rounded-xl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 mix-blend-overlay"></div>
                 </div>
-                <div className="px-6 py-2 bg-light-bg rounded-full font-semibold">
-                  #UXDesign
-                </div>
-                <div className="px-6 py-2 bg-light-bg rounded-full font-semibold">
-                  #GraphicDesign
-                </div>
-                <div className="px-6 py-2 bg-light-bg rounded-full font-semibold">
-                  #Creativity
+                
+                <div className="relative z-10 flex flex-wrap justify-center gap-5 py-8">
+                  {[
+                    { tag: 'UIDesign', delay: 0 },
+                    { tag: 'UXDesign', delay: 0.1 },
+                    { tag: 'GraphicDesign', delay: 0.2 },
+                    { tag: 'Creativity', delay: 0.3 }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="px-6 py-3 backdrop-blur-md bg-white/20 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 transform border border-white/30"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: item.delay,
+                        type: "spring", 
+                        stiffness: 100 
+                      }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)"
+                      }}
+                    >
+                      #{item.tag}
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -123,50 +142,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 bg-light-bg" data-aos="fade-up">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              My <span className="gradient-text">Skills</span>
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              Skills and expertise I&apos;ve developed throughout my learning journey and work experience
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
-            {skills.map((skill, index) => (
-              <div key={index} className="mb-6" data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="flex justify-between mb-2">
-                  <span className="font-semibold">{skill.name}</span>
-                  <span>{skill.percentage}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <motion.div
-                    className="h-2.5 rounded-full bg-gradient-to-r from-primary to-secondary"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.percentage}%` }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                  ></motion.div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Timeline Section */}
       <section className="py-20" data-aos="fade-up">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              History & <span className="gradient-text">Experience</span>
+              <span className="gradient-text">Experience</span>
             </h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              My journey of learning and skill development
-            </p>
+
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -180,7 +164,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="mr-8 relative">
-                  <div className="bg-gradient-to-r from-primary to-secondary w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg">
+                  <div className="bg-pink-300 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg">
                     {exp.icon}
                   </div>
                   {index !== experiences.length - 1 && (
@@ -194,64 +178,6 @@ export default function AboutPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section className="py-20 bg-light-bg" data-aos="fade-up">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="gradient-text">Education</span>
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto">
-              My educational background and knowledge development
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="card mb-6" data-aos="fade-up">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4">
-                  <div className="text-primary font-semibold">2019 - 2023</div>
-                  <div className="font-bold">Bachelor&apos;s Degree</div>
-                </div>
-                <div className="md:w-3/4">
-                  <h3 className="text-xl font-bold mb-2">Digital Media Design</h3>
-                  <p className="text-gray-600 mb-2">Leading University, Thailand</p>
-                  <p>Studied design principles, user research, UI/UX design, graphic design, and brand design</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="card mb-6" data-aos="fade-up" data-aos-delay="100">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4">
-                  <div className="text-primary font-semibold">2022</div>
-                  <div className="font-bold">Online Course</div>
-                </div>
-                <div className="md:w-3/4">
-                  <h3 className="text-xl font-bold mb-2">Advanced UI/UX Design</h3>
-                  <p className="text-gray-600 mb-2">Udemy</p>
-                  <p>Learned advanced UI/UX design techniques and how to create design systems</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="card" data-aos="fade-up" data-aos-delay="200">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4">
-                  <div className="text-primary font-semibold">2021</div>
-                  <div className="font-bold">Workshop</div>
-                </div>
-                <div className="md:w-3/4">
-                  <h3 className="text-xl font-bold mb-2">Graphic Design Masterclass</h3>
-                  <p className="text-gray-600 mb-2">Creative Design Academy</p>
-                  <p>Learned creative graphic design techniques and professional design software usage</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
