@@ -3,37 +3,9 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaGraduationCap, FaAward, FaLaptopCode, FaPalette } from 'react-icons/fa';
 
 export default function AboutPage() {
 
-
-  const experiences = [
-    {
-      year: '2023',
-      title: 'Graduated',
-      desc: 'Completed Bachelor&apos;s Degree in Digital Media Design',
-      icon: <FaGraduationCap size={24} />,
-    },
-    {
-      year: '2022',
-      title: 'Internship at Design Studio',
-      desc: 'Gained real-world experience at a leading design company',
-      icon: <FaLaptopCode size={24} />,
-    },
-    {
-      year: '2021',
-      title: 'UI/UX Design Competition Winner',
-      desc: 'Won first place in a university-level UI/UX design competition',
-      icon: <FaAward size={24} />,
-    },
-    {
-      year: '2020',
-      title: 'Started Learning Graphic Design',
-      desc: 'Began serious study and practice in graphic design',
-      icon: <FaPalette size={24} />,
-    },
-  ];
 
   return (
     <MainLayout>
@@ -153,32 +125,6 @@ export default function AboutPage() {
 
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                className="flex mb-12"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="mr-8 relative">
-                  <div className="bg-pink-300 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg">
-                    {exp.icon}
-                  </div>
-                  {index !== experiences.length - 1 && (
-                    <div className="absolute top-14 left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200"></div>
-                  )}
-                </div>
-                <div className="card flex-1">
-                  <div className="text-primary font-semibold">{exp.year}</div>
-                  <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
-                  <p>{exp.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
     </MainLayout>
