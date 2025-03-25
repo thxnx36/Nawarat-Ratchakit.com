@@ -74,30 +74,29 @@ export default function EducationPage() {
           </div>
 
           {/* Education Timeline */}
-          <div className="max-w-6xl mx-auto mb-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-4xl mx-auto mb-20">
+            <div className="relative pl-8 border-l-2 border-gray-200 ml-4 md:ml-0">
               {educationItems.map((education, index) => (
                 <motion.div
                   key={index}
-                  className="card p-6 relative overflow-hidden"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-12 relative"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
-                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white shadow-lg mr-4">
-                      {education.icon}
-                    </div>
-                    <div className="text-primary font-semibold">{education.year}</div>
+                  <div className="absolute -left-12 w-10 h-10 rounded-full bg-gradient-to-r from-pink-300 to-pink-500 flex items-center justify-center text-white shadow-lg">
+                    {education.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{education.degree}</h3>
-                  <div className="text-gray-600 mb-4">{education.institution}</div>
-                  {education.description && (
-                    <p className="text-gray-600">{education.description}</p>
-                  )}
+                  <div className="card ml-2">
+                    <div className="text-primary font-semibold mb-1">{education.year}</div>
+                    <h3 className="text-xl font-bold mb-2">{education.degree}</h3>
+                    <div className="text-gray-600 mb-3">{education.institution}</div>
+                    {education.description && (
+                      <p className="text-gray-600">{education.description}</p>
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </div>
