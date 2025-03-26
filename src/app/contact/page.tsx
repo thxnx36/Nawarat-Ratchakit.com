@@ -78,7 +78,7 @@ export default function ContactPage() {
     {
       icon: <FaEnvelope className="text-primary" size={24} />,
       title: 'Email',
-      details: 'thanyaret.seangsrichan@gmail.com',
+      details: 'Nawarat.ratchakit@gmail.com',
     },
     {
       icon: <FaPhone className="text-primary" size={24} />,
